@@ -3,7 +3,7 @@ using Logic;
 
 namespace TestCar
 {
-    public class UnitTest1
+    public class UnitTest
     {
         [Theory]
         [InlineData(100, 200, $"RPM: 600 r/min. Torque: 900 nm")]
@@ -12,7 +12,7 @@ namespace TestCar
 
         public void TestCarIndicator(int air, int gas, string indication)
         {
-            EngineLS216 engineLS216 = new EngineLS216();
+            IEngine engineLS216 = new EngineLS216();
             Carting carting = new Carting(engineLS216);
             carting.GetIndicators(new FlammableMixture { Air = air, Gas = gas }).Should().Be(indication);
         }
